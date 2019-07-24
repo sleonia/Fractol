@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:13:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/20 13:04:15 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/24 09:47:32 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 /*
 ** Map size
 */
-# define HEIGHT		1300
-# define WIDTH		1300
+# define WIDTH		1200
+# define HEIGHT		800
 
 /*
 ** Event`s
@@ -25,10 +25,16 @@
 # define EXIT  		53
 
 /*
-** List of fractol`s
+** Key of fractol`s
 */
+# define MANDELBROT "mandelbrot"
+# define JULIA     	"julia"
 
-
+/*
+** Key of fractol`s
+*/
+# define MANDELBROT_KEY 1
+# define JULIA_KEY 		2
 
 /*
 ** Library`s
@@ -46,15 +52,22 @@ typedef struct		s_mlx
 	void			*ptr;
 	void			*win;
 	void			*img;
-	char			*data;
+	int				*data;
 	int				bpp;
-	int				size_line;
-	int				endian;
+	int				size_l;
+	int				endn;
 }					t_mlx;
+
+typedef struct		s_crdt
+{
+	double			x;
+	double			y;
+}					t_crdt;
 
 typedef struct		s_fractol
 {
 	t_mlx			*mlx;
+	t_crdt			*crdt;
 }					t_fractol;
 
 /*
@@ -65,28 +78,39 @@ typedef struct		s_fractol
 ** main.c
 */
 static	int			error_prosessing(void);
-int					main(int ac, char **av);
+static	int			arg_prosessing(char *arg);
+int					main();
 
 /*
 ** window.c
 */
 static int			close_window(void *param);
-int					window(t_fractol *fractol);
+int					create_window(int key, t_fractol *fractol);
 
 /*
 ** list.c
 */
-t_fractol			*create_struct();
+t_fractol			*create_struct(void);
 
 /*
 ** key_event.c
 */
-int                 key_event(int keycode, t_fractol *fractol);
+int					key_event(int keycode, t_fractol *fractol);
+
+/*
+** mandelbrot.c
+*/
+void				mandelbrot(t_fractol *fractol);
 
 /*
 ** drow.c
 */
-void				put_pixel(t_fractol *fractol, int x, int y, int color);
+void				put_pixel(int x, int y, int color, t_fractol *fractol);
+void				fill_backgound(int color, t_fractol *fractol);
 
+/*
+** change_fractol.c
+*/
+void				change_fractol(int key, t_fractol *fractol);
 
 #endif

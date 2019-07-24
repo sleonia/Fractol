@@ -1,36 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   drow.c                                             :+:      :+:    :+:   */
+/*   mandelbrot.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/16 11:09:30 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/24 08:06:55 by sleonia          ###   ########.fr       */
+/*   Created: 2019/07/21 01:17:45 by sleonia           #+#    #+#             */
+/*   Updated: 2019/07/24 09:24:14 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void				put_pixel(int x, int y, int color, t_fractol *fractol)
+void				mandelbrot(t_fractol *fractol)
 {
-	fractol->mlx->data[y * WIDTH + x] = color;
-}
-
-void				fill_backgound(int color, t_fractol *fractol)
-{
-	int				x;
-	int				y;
-
-	y = 0;
-	while (y < HEIGHT)
+	int A, B = 100, i;
+	double a, b, x, y, t, n = 250;
+	while (B <= 4 * n)
 	{
-		x = 0;
-		while (x < WIDTH)
+		b = 2 - (B/n);
+		A = 100;
+		while (A <= 4 * n)
 		{
-			put_pixel(x, y, color, fractol);
-			x++;
+			a = -2 + (A / n);
+			x = 0;
+			y = 0;
+			i = 1;
+			while (i <= 1000)
+			{
+				t = x;
+				x = (x * x) - (y * y) + a;
+				y = (2 * t * y) + b;
+				if ((x * x) + (y * y) > 4)
+					break ;
+				i++;
+			}
+			if (i == 1001)
+				put_pixel(A, B,  0xFFFFFF, fractol);
+			A++;
 		}
-		y++;
+		B++;
 	}
+	return ;
 }

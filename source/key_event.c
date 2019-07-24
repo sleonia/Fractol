@@ -6,15 +6,15 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:38:18 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/20 12:41:31 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/24 07:32:52 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int                 key_event(int keycode, t_fractol *fractol)
+int					key_event(int keycode, t_fractol *fractol)
 {
 	if (keycode == EXIT)
-		exit (0);
-	return (0);		
+		exit(0);
+	return (0);
 }

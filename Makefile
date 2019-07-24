@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2019/07/20 12:38:34 by sleonia          ###   ########.fr        #
+#    Updated: 2019/07/24 09:10:06 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,11 +44,14 @@ INC = $(addprefix -I, $(INC_PATH))
 INC_LIB = $(addprefix -I, $(INC_PATH))
 INC_MLX = $(addprefix -I, $(INC_PATH))
 
-SRC_NAME =	main.c		\
-			window.c	\
-			list.c		\
-			key_event.c \
-			drow.c
+SRC_NAME =	main.c		  	\
+			window.c	 	\
+			list.c		  	\
+			key_event.c   	\
+			mandelbrot.c  	\
+			drow.c		  	\
+			change_fractol.c
+			
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
 all: $(NAME)
@@ -59,7 +62,7 @@ $(NAME): $(OBJ)
 	 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
-	@gcc $(INC) -o $@ -c $^
+	@gcc $(INC) -o $@ -c $<
 
 #****************************************************************************#
 #									OTHER			 						 #

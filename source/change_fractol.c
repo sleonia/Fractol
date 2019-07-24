@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   list.c                                             :+:      :+:    :+:   */
+/*   change_fractol.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/20 11:55:26 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/24 07:33:47 by sleonia          ###   ########.fr       */
+/*   Created: 2019/07/24 09:09:39 by sleonia           #+#    #+#             */
+/*   Updated: 2019/07/24 09:49:30 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-t_fractol			*create_struct(void)
+void				change_fractol(int key, t_fractol *fractol)
 {
-	t_fractol		*fractol;
-
-	if (!(fractol = (t_fractol *)malloc(sizeof(t_fractol))))
-		return (NULL);
-	if (!(fractol->mlx = (t_mlx *)malloc(sizeof(t_mlx))))
-		return (NULL);
-	if (!(fractol->crdt = (t_crdt *)malloc(sizeof(t_crdt))))
-		return (NULL);
-	fractol->crdt->x = 0;
-	fractol->crdt->y = 0;
-	return (fractol);
+	if (key == MANDELBROT_KEY)
+		mandelbrot(fractol);
+	if (key == JULIA_KEY)
+		julia(fractol);
 }
