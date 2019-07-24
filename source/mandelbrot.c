@@ -6,40 +6,55 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 01:17:45 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/24 09:24:14 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/24 20:08:37 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
+static void			calculate_cmplx(int x, int y, t_fractol *fractol)
+{
+	int				i;
+
+	i = 0;
+	fractol->cmplx->key = 0;
+	fractol->cmplx->z_x = fractol->cmplx->c_x;
+	fractol->cmplx->z_y = fractol->cmplx->c_y;
+	while (i < REPEATS)
+	{
+		fractol->cmplx->sqr_z_x = fractol->cmplx->z_x * fractol->cmplx->z_x;
+		fractol->cmplx->sqr_z_y = fractol->cmplx->z_y * fractol->cmplx->z_y;
+		if (fractol->cmplx->sqr_z_x + fractol->cmplx->sqr_z_y > 5)
+		{
+			fractol->cmplx->key = 1;
+			break ;
+		}
+		fractol->cmplx->z_y = 2 * fractol->cmplx->z_x * \
+					fractol->cmplx->z_y + fractol->cmplx->c_y;
+		fractol->cmplx->z_x = fractol->cmplx->sqr_z_x - \
+					fractol->cmplx->sqr_z_y + fractol->cmplx->c_x;
+		i++;
+	}
+	if (fractol->cmplx->key == 1)
+		put_pixel(x, y, fractol->color, fractol);
+}
+
 void				mandelbrot(t_fractol *fractol)
 {
-	int A, B = 100, i;
-	double a, b, x, y, t, n = 250;
-	while (B <= 4 * n)
+	int				x;
+	int				y;
+
+	y = 0;
+	while (y < HEIGHT)
 	{
-		b = 2 - (B/n);
-		A = 100;
-		while (A <= 4 * n)
+		x = 0;
+		fractol->cmplx->c_y = MAX_Y - y * SHIFT_Y;
+		while (x < WIDTH)
 		{
-			a = -2 + (A / n);
-			x = 0;
-			y = 0;
-			i = 1;
-			while (i <= 1000)
-			{
-				t = x;
-				x = (x * x) - (y * y) + a;
-				y = (2 * t * y) + b;
-				if ((x * x) + (y * y) > 4)
-					break ;
-				i++;
-			}
-			if (i == 1001)
-				put_pixel(A, B,  0xFFFFFF, fractol);
-			A++;
+			fractol->cmplx->c_x = MIN_X + x * SHIFT_X;
+			calculate_cmplx(x, y, fractol);
+			x++;
 		}
-		B++;
+		y++;
 	}
-	return ;
 }

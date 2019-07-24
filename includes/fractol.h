@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:13:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/24 09:47:32 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/24 20:22:31 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,23 @@
 # define HEIGHT		800
 
 /*
+** Table for calculate complex numbers
+*/
+# define MAX_X		1.0
+# define MIN_X		-2.0
+# define MIN_Y		-1.0
+# define MAX_Y		MIN_Y + (MAX_X - MIN_X) * HEIGHT / WIDTH
+# define SHIFT_X	(MAX_X - MIN_X) / (WIDTH - 1)
+# define SHIFT_Y	(MAX_Y - MIN_Y) / (HEIGHT - 1)
+# define REPEATS	30
+
+/*
 ** Event`s
 */
 # define EXIT  		53
 
 /*
-** Key of fractol`s
+** List of fractol`s
 */
 # define MANDELBROT "mandelbrot"
 # define JULIA     	"julia"
@@ -37,6 +48,16 @@
 # define JULIA_KEY 		2
 
 /*
+** Colors
+*/
+# define WHITE 		0xFFFFFF
+# define BLOOD 		0x630101
+# define YELLOW		0xA18B28
+# define PURPLE 	0x9303A7
+# define BLUE 		0x0B61A4
+# define GREEN 		0x58E000
+
+/*
 ** Library`s
 */
 # include <math.h>
@@ -46,7 +67,6 @@
 /*
 ** Struct`s
 */
-
 typedef struct		s_mlx
 {
 	void			*ptr;
@@ -58,16 +78,23 @@ typedef struct		s_mlx
 	int				endn;
 }					t_mlx;
 
-typedef struct		s_crdt
+typedef struct		s_cmplx
 {
-	double			x;
-	double			y;
-}					t_crdt;
+	int				key;
+	double			c_x;
+	double			c_y;
+	double			z_x;
+	double			z_y;
+	double			sqr_z_x;
+	double			sqr_z_y;
+}					t_cmplx;
 
 typedef struct		s_fractol
 {
+	int				key;
+	int				color;
 	t_mlx			*mlx;
-	t_crdt			*crdt;
+	t_cmplx			*cmplx;
 }					t_fractol;
 
 /*
@@ -85,21 +112,24 @@ int					main();
 ** window.c
 */
 static int			close_window(void *param);
-int					create_window(int key, t_fractol *fractol);
+int					create_window(t_fractol *fractol);
 
 /*
 ** list.c
 */
+int					delete_struct(int key, t_fractol *fractol);
 t_fractol			*create_struct(void);
 
 /*
 ** key_event.c
 */
+static void			recolor(int keycode, t_fractol *fractol);
 int					key_event(int keycode, t_fractol *fractol);
 
 /*
 ** mandelbrot.c
 */
+static void			calculate_cmplx(int x, int y, t_fractol *fractol);
 void				mandelbrot(t_fractol *fractol);
 
 /*
@@ -111,6 +141,6 @@ void				fill_backgound(int color, t_fractol *fractol);
 /*
 ** change_fractol.c
 */
-void				change_fractol(int key, t_fractol *fractol);
+void				change_fractol(t_fractol *fractol);
 
 #endif
