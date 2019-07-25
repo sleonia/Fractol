@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:13:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/24 20:22:31 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/25 19:17:58 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,15 @@
 # define GREEN 		0x58E000
 
 /*
+** Strip`s step
+*/
+# define X_STEP 	10
+# define Y_STEP 	10
+
+/*
 ** Library`s
 */
+# include <time.h>
 # include <math.h>
 # include "./libft/includes/libft.h"
 # include "./mlx/mlx.h"
@@ -137,10 +144,16 @@ void				mandelbrot(t_fractol *fractol);
 */
 void				put_pixel(int x, int y, int color, t_fractol *fractol);
 void				fill_backgound(int color, t_fractol *fractol);
+void				main_drow(int x, int y, t_fractol *fractol);
 
 /*
 ** change_fractol.c
 */
 void				change_fractol(t_fractol *fractol);
+
+/*
+** strips.c
+*/
+void				drow_strips(int x, int y, t_fractol *fractol);
 
 #endif

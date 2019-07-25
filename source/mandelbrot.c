@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 01:17:45 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/24 20:08:37 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/25 18:23:52 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void			calculate_cmplx(int x, int y, t_fractol *fractol)
 	{
 		fractol->cmplx->sqr_z_x = fractol->cmplx->z_x * fractol->cmplx->z_x;
 		fractol->cmplx->sqr_z_y = fractol->cmplx->z_y * fractol->cmplx->z_y;
-		if (fractol->cmplx->sqr_z_x + fractol->cmplx->sqr_z_y > 5)
+		if (fractol->cmplx->sqr_z_x + fractol->cmplx->sqr_z_y > 4)
 		{
 			fractol->cmplx->key = 1;
 			break ;
@@ -36,7 +36,7 @@ static void			calculate_cmplx(int x, int y, t_fractol *fractol)
 		i++;
 	}
 	if (fractol->cmplx->key == 1)
-		put_pixel(x, y, fractol->color, fractol);
+		main_drow(x, y, fractol);
 }
 
 void				mandelbrot(t_fractol *fractol)
