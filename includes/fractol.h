@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:13:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/25 19:17:58 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/26 23:00:58 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,23 +17,14 @@
 ** Map size
 */
 # define WIDTH		1200
-# define HEIGHT		800
-
-/*
-** Table for calculate complex numbers
-*/
-# define MAX_X		1.0
-# define MIN_X		-2.0
-# define MIN_Y		-1.0
-# define MAX_Y		MIN_Y + (MAX_X - MIN_X) * HEIGHT / WIDTH
-# define SHIFT_X	(MAX_X - MIN_X) / (WIDTH - 1)
-# define SHIFT_Y	(MAX_Y - MIN_Y) / (HEIGHT - 1)
-# define REPEATS	30
+# define HIGHT		800
 
 /*
 ** Event`s
 */
 # define EXIT  		53
+# define PLUS  		69
+# define MINUS		78
 
 /*
 ** List of fractol`s
@@ -74,6 +65,19 @@
 /*
 ** Struct`s
 */
+typedef struct		s_crdn
+{
+	double			max_x;
+	double			min_x;
+	double			max_y;
+	double			min_y;
+	double			shift_x;
+	double			shift_y;
+	double			move_x;
+	double			move_y;
+	int				repeats;
+}					t_crdn;
+
 typedef struct		s_mlx
 {
 	void			*ptr;
@@ -100,6 +104,7 @@ typedef struct		s_fractol
 {
 	int				key;
 	int				color;
+	t_crdn			*crdn;
 	t_mlx			*mlx;
 	t_cmplx			*cmplx;
 }					t_fractol;
@@ -125,11 +130,14 @@ int					create_window(t_fractol *fractol);
 ** list.c
 */
 int					delete_struct(int key, t_fractol *fractol);
+void				fill_crdn(double min_x, double max_x, \
+						double min_y, t_fractol *fractol);
 t_fractol			*create_struct(void);
 
 /*
 ** key_event.c
 */
+void			zoom(int keycode, t_fractol *fractol);
 static void			recolor(int keycode, t_fractol *fractol);
 int					key_event(int keycode, t_fractol *fractol);
 
@@ -140,11 +148,11 @@ static void			calculate_cmplx(int x, int y, t_fractol *fractol);
 void				mandelbrot(t_fractol *fractol);
 
 /*
-** drow.c
+** draw.c
 */
 void				put_pixel(int x, int y, int color, t_fractol *fractol);
 void				fill_backgound(int color, t_fractol *fractol);
-void				main_drow(int x, int y, t_fractol *fractol);
+void				main_draw(int x, int y, t_fractol *fractol);
 
 /*
 ** change_fractol.c
@@ -155,5 +163,10 @@ void				change_fractol(t_fractol *fractol);
 ** strips.c
 */
 void				drow_strips(int x, int y, t_fractol *fractol);
+
+/*
+** mouse_event.c
+*/
+int					mouse_move(int x, int y, t_fractol *fractol);
 
 #endif

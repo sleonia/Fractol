@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 01:17:45 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/25 18:23:52 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/26 23:02:14 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ static void			calculate_cmplx(int x, int y, t_fractol *fractol)
 	fractol->cmplx->key = 0;
 	fractol->cmplx->z_x = fractol->cmplx->c_x;
 	fractol->cmplx->z_y = fractol->cmplx->c_y;
-	while (i < REPEATS)
+	while (i < fractol->crdn->repeats)
 	{
 		fractol->cmplx->sqr_z_x = fractol->cmplx->z_x * fractol->cmplx->z_x;
 		fractol->cmplx->sqr_z_y = fractol->cmplx->z_y * fractol->cmplx->z_y;
@@ -36,7 +36,7 @@ static void			calculate_cmplx(int x, int y, t_fractol *fractol)
 		i++;
 	}
 	if (fractol->cmplx->key == 1)
-		main_drow(x, y, fractol);
+		main_draw(x, y, fractol);
 }
 
 void				mandelbrot(t_fractol *fractol)
@@ -45,13 +45,15 @@ void				mandelbrot(t_fractol *fractol)
 	int				y;
 
 	y = 0;
-	while (y < HEIGHT)
+	while (y < HIGHT)
 	{
 		x = 0;
-		fractol->cmplx->c_y = MAX_Y - y * SHIFT_Y;
+		fractol->cmplx->c_y = fractol->crdn->max_x - y * \
+				fractol->crdn->shift_x + fractol->crdn->move_y;
 		while (x < WIDTH)
 		{
-			fractol->cmplx->c_x = MIN_X + x * SHIFT_X;
+			fractol->cmplx->c_x = fractol->crdn->min_x + x * \
+				fractol->crdn->shift_x + fractol->crdn->move_x;
 			calculate_cmplx(x, y, fractol);
 			x++;
 		}
