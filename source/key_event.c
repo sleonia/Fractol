@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:38:18 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/26 23:02:33 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/28 21:37:07 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,27 @@ void				zoom(int keycode, t_fractol *fractol)
 	double			min_x;
 	double			max_x;
 	double			min_y;
+	double			max_y;
 
 	min_x = fractol->crdn->min_x;
 	max_x = fractol->crdn->max_x;
 	min_y = fractol->crdn->min_y;
 	if (keycode == MINUS)
-		fill_crdn(min_x - 0.1, max_x + 0.1, min_y - 0.1, fractol);
+		fill_crdn(min_x - 0.1, max_x + 0.1, min_y - 0.1, max_y + 0.1, fractol);
 	if (keycode == PLUS)
-		fill_crdn(min_x + 0.1, max_x - 0.1, min_y + 0.1, fractol);
+		fill_crdn(min_x + 0.1, max_x - 0.1, min_y + 0.1, max_y - 0.1, fractol);
+}
+
+static void			move(int keycode, t_fractol *fractol)
+{
+	if (keycode == 2)
+		fractol->crdn->move_x -= 0.01;
+	if (keycode == 0)
+		fractol->crdn->move_x += 0.01;
+	if (keycode == 1)
+		fractol->crdn->move_y += 0.01;
+	if (keycode == 13)
+		fractol->crdn->move_y -= 0.01;
 }
 
 static void			recolor(int keycode, t_fractol *fractol)
@@ -57,6 +70,8 @@ int					key_event(int keycode, t_fractol *fractol)
 		recolor(keycode, fractol);
 	if (keycode == PLUS || keycode == MINUS)
 		zoom(keycode, fractol);
+	if ((keycode >= 0 && keycode <= 2) || keycode == 13)
+		move(keycode, fractol);
 	mlx_clear_window(fractol->mlx->ptr, fractol->mlx->win);
 	change_fractol(fractol);
 	fill_backgound(0, fractol);

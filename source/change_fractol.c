@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/24 09:09:39 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/25 20:21:11 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/28 01:29:08 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void				change_fractol(t_fractol *fractol)
 {
-	if (fractol->key == MANDELBROT_KEY)
+	if (fractol->arg == MANDELBROT_KEY)
 		mandelbrot(fractol);
 	// if (key == JULIA_KEY)
 		// julia(fractol);

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:34:25 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/26 22:30:15 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/28 01:20:54 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int					create_window(t_fractol *fractol)
 	change_fractol(fractol);
 	mlx_hook(fractol->mlx->win, 17, 0, close_window, fractol);
 	mlx_hook(fractol->mlx->win, 2, 0, key_event, fractol);
-	mlx_hook(fractol->mlx->win, 5, 0, mouse_move, fractol);
+	mlx_hook(fractol->mlx->win, 5, 0, mouse_press, fractol);
+	mlx_hook(fractol->mlx->win, 6, 0, mouse_move, fractol);
 	mlx_loop(fractol->mlx->ptr);
 	return (0);
 }
