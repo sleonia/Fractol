@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:13:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/28 02:52:15 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/29 06:01:11 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,110 +65,11 @@
 /*
 ** Struct`s
 */
-typedef struct		s_crdn
-{
-	double			max_x;
-	double			min_x;
-	double			max_y;
-	double			min_y;
-	double			shift_x;
-	double			shift_y;
-	double			move_x;
-	double			move_y;
-	int				repeats;
-}					t_crdn;
-
-typedef struct		s_mlx
-{
-	void			*ptr;
-	void			*win;
-	void			*img;
-	int				*data;
-	int				bpp;
-	int				size_l;
-	int				endn;
-}					t_mlx;
-
-typedef struct		s_cmplx
-{
-	int				key;
-	double			c_x;
-	double			c_y;
-	double			z_x;
-	double			z_y;
-	double			sqr_z_x;
-	double			sqr_z_y;
-}					t_cmplx;
-
-typedef struct		s_fractol
-{
-	int				arg;
-	int				move_flag;
-	int				color;
-	t_crdn			*crdn;
-	t_mlx			*mlx;
-	t_cmplx			*cmplx;
-}					t_fractol;
+# include "struct.h"
 
 /*
 ** Function`s
 */
-
-/*
-** main.c
-*/
-static	int			error_prosessing(void);
-static	int			arg_prosessing(char *arg);
-int					main();
-
-/*
-** window.c
-*/
-static int			close_window(void *param);
-int					create_window(t_fractol *fractol);
-
-/*
-** list.c
-*/
-int					delete_struct(int key, t_fractol *fractol);
-void				fill_crdn(double min_x, double max_x, \
-						double min_y, double max_y, t_fractol *fractol);
-t_fractol			*create_struct(void);
-
-/*
-** key_event.c
-*/
-void				zoom(int keycode, t_fractol *fractol);
-static void			recolor(int keycode, t_fractol *fractol);
-int					key_event(int keycode, t_fractol *fractol);
-
-/*
-** mandelbrot.c
-*/
-static void			calculate_cmplx(int x, int y, t_fractol *fractol);
-void				mandelbrot(t_fractol *fractol);
-
-/*
-** draw.c
-*/
-void				put_pixel(int x, int y, int color, t_fractol *fractol);
-void				fill_backgound(int color, t_fractol *fractol);
-void				main_draw(int x, int y, t_fractol *fractol);
-
-/*
-** change_fractol.c
-*/
-void				change_fractol(t_fractol *fractol);
-
-/*
-** strips.c
-*/
-void				drow_strips(int x, int y, t_fractol *fractol);
-
-/*
-** mouse_event.c
-*/
-int					mouse_move(int x, int y, t_fractol *fractol);
-int					mouse_press(int button, int x, int y, t_fractol *fractol);
+# include "function.h"
 
 #endif

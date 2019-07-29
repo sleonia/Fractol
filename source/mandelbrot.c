@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 01:17:45 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/28 02:41:30 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/07/28 23:52:26 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void				mandelbrot(t_fractol *fractol)
 	{
 		x = 0;
 		fractol->cmplx->c_y = fractol->crdn->max_x - y * \
-				fractol->crdn->shift_x + fractol->crdn->move_y;
+				fractol->crdn->shift_y + fractol->crdn->move_y;
 		while (x < WIDTH)
 		{
 			fractol->cmplx->c_x = fractol->crdn->min_x + x * \
