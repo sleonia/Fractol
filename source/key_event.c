@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:38:18 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/29 06:07:21 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/03 04:04:35 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,10 @@
 
 void				zoom(int keycode, t_fractol *fractol)
 {
-	double			min_x;
-	double			max_x;
-	double			min_y;
-	double			max_y;
-
-	min_x = fractol->crdn->min_x;
-	max_x = fractol->crdn->max_x;
-	min_y = fractol->crdn->min_y;
 	if (keycode == MINUS)
-		fill_crdn(min_x - 0.02, max_x + 0.02, min_y - 0.02, max_y + 0.02, fractol);
+		return ;
 	if (keycode == PLUS)
-		fill_crdn(min_x + 0.02, max_x - 0.02, min_y + 0.02, max_y - 0.02, fractol);
+		return ;
 }
 
 static void			move(int keycode, t_fractol *fractol)

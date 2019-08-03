@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:13:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/29 06:01:11 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/03 11:13:29 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,14 +29,8 @@
 /*
 ** List of fractol`s
 */
-# define MANDELBROT "mandelbrot"
-# define JULIA     	"julia"
-
-/*
-** Key of fractol`s
-*/
-# define MANDELBROT_KEY 1
-# define JULIA_KEY 		2
+# define MANDELBROT 0
+# define JULIA     	1
 
 /*
 ** Colors
@@ -61,6 +55,7 @@
 # include <math.h>
 # include "./libft/includes/libft.h"
 # include "./mlx/mlx.h"
+# include <OpenCL/cl.h>
 
 /*
 ** Struct`s

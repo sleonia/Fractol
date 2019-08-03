@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:52:08 by sleonia           #+#    #+#             */
-/*   Updated: 2019/07/29 06:26:18 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/03 12:00:57 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /*
 ** main.c
 */
-static	int			error_prosessing(void);
+static	int			error_prosessing(int key);
 static	int			arg_prosessing(char *arg);
 int					main();
 
@@ -35,8 +35,7 @@ int					create_window(t_fractol *fractol);
 ** list.c
 */
 int					delete_struct(int key, t_fractol *fractol);
-void				fill_crdn(double min_x, double max_x, \
-						double min_y, double max_y, t_fractol *fractol);
+void				fill_crdn(t_fractol *fractol);
 t_fractol			*create_struct(void);
 
 /*
@@ -74,5 +73,11 @@ void				drow_strips(int x, int y, t_fractol *fractol);
 */
 int					mouse_move(int x, int y, t_fractol *fractol);
 int					mouse_press(int button, int x, int y, t_fractol *fractol);
+
+/*
+** opencl.c
+*/
+void					calculate(t_fractol *fractol);
+void					init(t_fractol *fractol);
 
 #endif

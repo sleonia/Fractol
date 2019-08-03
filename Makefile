@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2019/07/26 21:58:00 by sleonia          ###   ########.fr        #
+#    Updated: 2019/08/03 12:03:34 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,8 +51,9 @@ SRC_NAME =	main.c		  	 \
 			mandelbrot.c  	 \
 			draw.c		  	 \
 			change_fractol.c \
-			strips.c		 \
-			mouse_event.c
+			draw_strips.c	 \
+			mouse_event.c	 \
+			opencl.c
 			
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -60,7 +61,8 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make lib_refresh
-	@gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ) -lm -L $(LIB_PATH) -lft -L $(MLX_PATH) -l mlx -framework OpenGL -framework AppKit
+	@gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ) -lm -L $(LIB_PATH) -lft -L $(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -framework OpenCL
+	# @gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ) -lm -L $(LIB_PATH) -lft -L $(MLX_PATH) -l mlx -framework OpenGL -framework AppKit
 	 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir -p $(OBJ_PATH)
