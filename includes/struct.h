@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:56:00 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/03 11:54:49 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/04 04:14:39 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,9 @@
 typedef struct			s_opencl
 {
 	char				*cl;
+	int					*arr_output;
+	float				*arr_x;
+	float				*arr_y;
 	cl_int				ret;
 	cl_platform_id		p_id;
 	cl_uint				ret_num_platforms;

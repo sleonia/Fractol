@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:13:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/03 11:13:29 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/04 09:30:21 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,11 @@
 */
 # define X_STEP 	10
 # define Y_STEP 	10
+
+/*
+** For calculate fractol`s
+*/
+# define PROGRAM_FILE "paralleling.cl"
 
 /*
 ** Library`s

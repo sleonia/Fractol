@@ -6,41 +6,41 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/21 01:17:45 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/03 11:16:33 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/04 06:40:47 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static void			calculate_cmplx(int x, int y, t_fractol *fractol)
+static void			calculate_cmplx(int x, int y, t_fractol *f)
 {
 	int				i;
 	int				key;
 
 	i = 0;
 	key = 0;
-	fractol->cmplx->new_x = fractol->cmplx->start_x;
-	fractol->cmplx->new_y = fractol->cmplx->start_y;
-	while (i < fractol->cmplx->repeats)
+	f->cmplx->new_x = f->cmplx->start_x;
+	f->cmplx->new_y = f->cmplx->start_y;
+	while (i < f->cmplx->repeats)
 	{
-		fractol->cmplx->sqr_x = fractol->cmplx->new_x * fractol->cmplx->new_x;
-		fractol->cmplx->sqr_y = fractol->cmplx->new_y * fractol->cmplx->new_y;
-		if (fractol->cmplx->sqr_x + fractol->cmplx->sqr_y > 4)
+		f->cmplx->sqr_x = f->cmplx->new_x * f->cmplx->new_x;
+		f->cmplx->sqr_y = f->cmplx->new_y * f->cmplx->new_y;
+		if (f->cmplx->sqr_x + f->cmplx->sqr_y > 4)
 		{
 			key = 1;
 			break ;
 		}
-		fractol->cmplx->new_y = 2 * fractol->cmplx->new_x * \
-							fractol->cmplx->new_y + fractol->cmplx->start_y;
-		fractol->cmplx->new_x = fractol->cmplx->sqr_x - \
-							fractol->cmplx->sqr_y + fractol->cmplx->start_x;
+		f->cmplx->new_y = 2 * f->cmplx->new_x * \
+							f->cmplx->new_y + f->cmplx->start_y;
+		f->cmplx->new_x = f->cmplx->sqr_x - \
+							f->cmplx->sqr_y + f->cmplx->start_x;
 		i++;
 	}
 	if (key == 1)
-		main_draw(x, y, fractol);
+		main_draw(x, y, f);
 }
 
-void				mandelbrot(t_fractol *fractol)
+void				mandelbrot(t_fractol *f)
 {
 	int				x;
 	int				y;
@@ -49,11 +49,11 @@ void				mandelbrot(t_fractol *fractol)
 	while (y < HIGHT)
 	{
 		x = 0;
-		fractol->cmplx->start_y = fractol->crdn->max_y - y * fractol->crdn->shift_y - fractol->crdn->move_y;
+		f->cmplx->start_y = f->crdn->max_y - y * f->crdn->shift_y - f->crdn->move_y;
 		while (x < WIDTH)
 		{
-			fractol->cmplx->start_x = fractol->crdn->min_x + x * fractol->crdn->shift_x - fractol->crdn->move_x;
-			calculate_cmplx(x, y, fractol);
+			f->cmplx->start_x = f->crdn->min_x + x * f->crdn->shift_x - f->crdn->move_x;
+			calculate_cmplx(x, y, f);
 			x++;
 		}
 		y++;
