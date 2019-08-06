@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:52:08 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/04 09:24:22 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/06 06:25:14 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 /*
 ** main.c
 */
-static	int			error_prosessing(int key);
+int	        		error_prosessing(int key);
 static	int			arg_prosessing(char *arg);
 int					main();
 
@@ -75,10 +75,8 @@ int					mouse_move(int x, int y, t_fractol *f);
 int					mouse_press(int button, int x, int y, t_fractol *f);
 
 /*
-** opencl.c
+** init_cl.c
 */
-void				*send_arg(t_fractol *f);
-void				*processing_arg(t_fractol *f);
-void				*init(t_fractol *f);
+void					*init_cl(t_fractol *f);
 
 #endif

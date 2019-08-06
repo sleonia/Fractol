@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/04/06 18:14:41 by doberyn           #+#    #+#              #
-#    Updated: 2019/07/20 09:38:17 by sleonia          ###   ########.fr        #
+#    Updated: 2019/08/04 13:37:21 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,7 @@ SRC_NAME =	ft_isnegative.c 		ft_memalloc.c   ft_putchar_fd.c 			ft_strcat.c     
 			ft_isascii.c    		ft_lstmap.c     ft_memset.c     			ft_sqr.c        	ft_strequ.c     ft_strncmp.c    ft_strtrim.c  \
 			ft_isdigit.c   			ft_lstnew.c     ft_putchar.c    			ft_sqrt.c       	ft_striter.c    ft_strncpy.c    ft_swap.c     \
 			ft_strrev.c 			ft_strup.c		ft_strlow.c					ft_strjoin_free.c	ft_findsymb.c	get_next_line.c ft_getnbr.c   \
-			ft_destroy_int_arr.c 	ft_len_arr.c 	ft_destroy_string_arr.c
+			ft_destroy_int_arr.c 	ft_len_arr.c 	ft_destroy_string_arr.c		read_file.c
 			
 OBJ_NAME = $(SRC_NAME:.c=.o)
 

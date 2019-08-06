@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 19:29:07 by lshellie          #+#    #+#             */
-/*   Updated: 2019/07/13 01:31:25 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/04 13:36:46 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,5 +118,10 @@ int					ft_getnbr(char *str);
 void				ft_destroy_int_arr(int **arr, int i);
 void				ft_destroy_string_arr(char **arr);
 int					ft_len_arr(char **arr);
+
+/*
+**		FRACTOL
+*/
+char				*read_file(int size, char *name);
 
 #endif

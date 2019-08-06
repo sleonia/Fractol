@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 11:55:26 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/04 06:45:18 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/06 06:34:59 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ int					delete_struct(int key, t_fractol *f)
 {
 	if (key == 1 || key == 2 || key == 3 || key == 4)
 	{
-		ft_strdel(&(f->opencl->cl));
-		ft_memdel((void *)&(f->opencl->arr_output));
-		ft_memdel((void *)&(f->opencl->arr_x));
-		ft_memdel((void *)&(f->opencl->arr_y));
+		// ft_strdel(&(f->opencl->cl));
+		// ft_memdel((void *)&(f->opencl->arr_output));
+		// ft_memdel((void *)&(f->opencl->arr_x));
+		// ft_memdel((void *)&(f->opencl->arr_y));
 		ft_memdel((void *)(f->opencl));
 	}
 	if (key == 2 || key == 3 || key == 4)

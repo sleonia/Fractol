@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:13:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/04 09:30:21 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/06 08:29:25 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@
 /*
 ** Map size
 */
-# define WIDTH		1200
-# define HIGHT		800
+# define WIDTH		1000
+# define HIGHT		600
+# define SIZE		WIDTH * HIGHT
 
 /*
 ** Event`s
@@ -52,6 +53,8 @@
 ** For calculate fractol`s
 */
 # define PROGRAM_FILE "paralleling.cl"
+# define KERNEL_FUNC  "fractol"
+# define KERNEL_SIZE  500
 
 /*
 ** Library`s

@@ -6,13 +6,13 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 07:18:07 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/04 06:41:08 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/04 13:13:10 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static	int			error_prosessing(int key)
+int					error_prosessing(int key)
 {
 	if (key == 0)
 		ft_putstr("\033[31merror\033[0m\n");

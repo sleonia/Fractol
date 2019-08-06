@@ -1,25 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_fractol.c                                   :+:      :+:    :+:   */
+/*   read_file.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/07/24 09:09:39 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/06 06:24:46 by sleonia          ###   ########.fr       */
+/*   Created: 2019/08/04 13:31:34 by sleonia           #+#    #+#             */
+/*   Updated: 2019/08/06 07:16:44 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fractol.h"
+#include "libft.h"
 
-void				change_fractol(t_fractol *f)
+char				*read_file(int size, char *name)
 {
-	if ((f->arg ^ MANDELBROT) == 0)
-		init_cl(f);
-		// mandelbrot(f);
-	if ((f->arg ^ JULIA) == 0) 
-		return ;
-		// julia(fractol);
-	mlx_put_image_to_window(f->mlx->ptr, f->mlx->win, f->mlx->img, 0, 0);
-	fill_backgound(0, f);
+	int				fd;
+	char			*str;
+
+	if (size <= 0)
+		return (NULL);
+	if (!(str = (char *)malloc(sizeof(char) * size)))
+		return (NULL);
+	if ((fd = open(name, O_RDONLY)) < 0)
+	{
+		ft_strdel(&str);		
+		return (NULL);
+	}
+	if ((read(fd, str, 0)) < 0)
+		return (NULL);
+	read(fd, str, size);
+	str[size] = '\0';
+	return (str);
 }
