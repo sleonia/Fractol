@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 07:18:07 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/04 13:13:10 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/08 10:43:38 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int					main(int ac, char **av)
 	{
 		if (!(f = create_struct()))
 			return (error_prosessing(0));
-		if ((f->arg = arg_prosessing(av[1])) < 0)
+		if ((f->fractol = arg_prosessing(av[1])) < 0)
 			return (error_prosessing(1));
 		if (create_window(f) == 1)
 			return (error_prosessing(0));

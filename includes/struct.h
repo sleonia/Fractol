@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:56:00 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/06 08:32:04 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/08 10:43:25 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,17 +18,17 @@
 */
 # include "fractol.h"
 
-typedef struct			s_opencl
+typedef struct			s_cl
 {
-	cl_mem				result;
-	cl_int				ret;
+	cl_mem				res;
+	cl_platform_id		p_id;
 	cl_uint				ret_num_platforms;
-	cl_device_id		device_id;
+	cl_device_id		d_id;
 	cl_context			context;
 	cl_command_queue	queue;
 	cl_program			program;
 	cl_kernel			kernel;
-}						t_opencl;
+}						t_cl;
 
 typedef struct			s_crdn
 {
@@ -66,10 +66,10 @@ typedef struct			s_cmplx
 
 typedef struct			s_fractol
 {
-	short int			arg;
+	short int			fractol;
 	short int			move_flag;
 	int					color;
-	t_opencl			*opencl;
+	t_cl				*cl;
 	t_crdn				*crdn;
 	t_mlx				*mlx;
 	t_cmplx				*cmplx;

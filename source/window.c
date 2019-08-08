@@ -6,15 +6,20 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:34:25 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/03 10:56:29 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/08 00:39:27 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-static int			close_window(void *param)
+static int			close_window(void *f)
 {
-	(void)param;
+	clReleaseProgram(((t_fractol *)f)->cl->program);
+	clReleaseKernel(((t_fractol *)f)->cl->kernel);
+	clReleaseCommandQueue(((t_fractol *)f)->cl->queue);
+	clReleaseContext(((t_fractol *)f)->cl->context);
+	mlx_destroy_image(((t_fractol *)f)->mlx->ptr, ((t_fractol *)f)->mlx->img);
+	(void)f;
 	exit(0);
 }
 
@@ -23,7 +28,7 @@ int					create_window(t_fractol *fractol)
 	if (!(fractol->mlx->ptr = mlx_init()))
 		return (delete_struct(4, fractol));
 	if (!(fractol->mlx->win = mlx_new_window(fractol->mlx->ptr, \
-						WIDTH, HIGHT, "Can you feel it?!")))
+						WIDTH, HIGHT, "fractol")))
 		return (delete_struct(4, fractol));
 	if (!(fractol->mlx->img = mlx_new_image(fractol->mlx->ptr, WIDTH, HIGHT)))
 		return (delete_struct(4, fractol));

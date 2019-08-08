@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:52:08 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/06 06:25:14 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/08 00:13:39 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ int					mouse_press(int button, int x, int y, t_fractol *f);
 /*
 ** init_cl.c
 */
-void					*init_cl(t_fractol *f);
+void				*init_cl(t_fractol *f);
 
 #endif

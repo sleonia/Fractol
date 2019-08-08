@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 11:55:26 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/06 06:34:59 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/08 17:11:25 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,7 @@ int					delete_struct(int key, t_fractol *f)
 {
 	if (key == 1 || key == 2 || key == 3 || key == 4)
 	{
-		// ft_strdel(&(f->opencl->cl));
-		// ft_memdel((void *)&(f->opencl->arr_output));
-		// ft_memdel((void *)&(f->opencl->arr_x));
-		// ft_memdel((void *)&(f->opencl->arr_y));
-		ft_memdel((void *)(f->opencl));
+		ft_memdel((void *)(f->cl));
 	}
 	if (key == 2 || key == 3 || key == 4)
 		ft_memdel((void *)(f->crdn));
@@ -52,9 +48,8 @@ t_fractol			*create_struct(void)
 	if (!(f = (t_fractol *)malloc(sizeof(t_fractol))))
 		return (NULL);
 	f->move_flag = 0;
-	if (!(f->opencl = (t_opencl *)malloc(sizeof(t_opencl))))
+	if (!(f->cl = (t_cl *)malloc(sizeof(t_cl))))
 		delete_struct(0, f);
-	f->opencl->size = 500;
 	if (!(f->crdn = (t_crdn *)malloc(sizeof(t_crdn))))
 		delete_struct(1, f);
 	fill_crdn(f);

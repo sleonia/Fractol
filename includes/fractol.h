@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:13:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/06 08:29:25 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/08 05:37:03 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,7 @@
 /*
 ** For calculate fractol`s
 */
-# define PROGRAM_FILE "paralleling.cl"
-# define KERNEL_FUNC  "fractol"
-# define KERNEL_SIZE  500
+# define PROGRAM_FILE "/Users/sleonia/Desktop/fractol/source/speed.cl"
 
 /*
 ** Library`s
