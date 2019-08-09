@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:34:25 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/08 00:39:27 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/09 09:58:45 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,23 +23,51 @@ static int			close_window(void *f)
 	exit(0);
 }
 
-int					create_window(t_fractol *fractol)
+void				fill_backgound(int color, t_fractol *f)
 {
-	if (!(fractol->mlx->ptr = mlx_init()))
-		return (delete_struct(4, fractol));
-	if (!(fractol->mlx->win = mlx_new_window(fractol->mlx->ptr, \
+	int				x;
+	int				y;
+	int				i;
+
+	i = -1;
+	while (++i < SIZE)
+	{
+		x = i % WIDTH; //bitwise operation
+		y = i / WIDTH;
+		f->mlx->data[y * WIDTH + x] = color;
+	}
+}
+
+void				*start_fractol(t_fractol *f)
+{
+	fill_backgound(0, f);
+	if (!(create_buf(f)))
+		return (NULL);
+	mlx_put_image_to_window(f->mlx->ptr, f->mlx->win, f->mlx->img, 0, 0);
+	fill_backgound(0, f);
+	return (f);
+}
+
+int					create_window(t_fractol *f)
+{
+	if (!(f->mlx->ptr = mlx_init()))
+		return (delete_struct(4, f));
+	if (!(f->mlx->win = mlx_new_window(f->mlx->ptr, \
 						WIDTH, HIGHT, "fractol")))
-		return (delete_struct(4, fractol));
-	if (!(fractol->mlx->img = mlx_new_image(fractol->mlx->ptr, WIDTH, HIGHT)))
-		return (delete_struct(4, fractol));
-	if (!(fractol->mlx->data = (int *)mlx_get_data_addr(fractol->mlx->img, \
-		&(fractol->mlx->bpp), &(fractol->mlx->size_l), &(fractol->mlx->endn))))
-		return (delete_struct(4, fractol));
-	change_fractol(fractol);
-	mlx_hook(fractol->mlx->win, 17, 0, close_window, fractol);
-	mlx_hook(fractol->mlx->win, 2, 0, key_event, fractol);
-	mlx_hook(fractol->mlx->win, 5, 0, mouse_press, fractol);
-	mlx_hook(fractol->mlx->win, 6, 0, mouse_move, fractol);
-	mlx_loop(fractol->mlx->ptr);
+		return (delete_struct(4, f));
+	if (!(f->mlx->img = mlx_new_image(f->mlx->ptr, WIDTH, HIGHT)))
+		return (delete_struct(4, f));
+	if (!(f->mlx->data = (int *)mlx_get_data_addr(f->mlx->img, \
+		&(f->mlx->bpp), &(f->mlx->size_l), &(f->mlx->endn))))
+		return (delete_struct(4, f));
+	if (!init_cl(f))
+		return (1);
+	if (!start_fractol(f))
+		return (1);
+	mlx_hook(f->mlx->win, 17, 0, close_window, f);
+	mlx_hook(f->mlx->win, 2, 0, key_event, f);
+	mlx_hook(f->mlx->win, 5, 0, mouse_press, f);
+	mlx_hook(f->mlx->win, 6, 0, mouse_move, f);
+	mlx_loop(f->mlx->ptr);
 	return (0);
 }

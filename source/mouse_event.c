@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/26 16:19:59 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/04 06:44:32 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/09 03:09:47 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int					mouse_move(int x, int y, t_fractol *f)
 	else if (x < 600)
 		f->crdn->move_x += 0.05;
 	mlx_clear_window(f->mlx->ptr, f->mlx->win);
-	change_fractol(f);
+	start_fractol(f);
 	fill_backgound(0, f);
 	return (0);
 }
@@ -47,7 +47,7 @@ int					mouse_press(int button, int x, int y, t_fractol *f)
 	if (button == 2)
 		f->move_flag = f->move_flag == 0 ? 1 : 0;
 	mlx_clear_window(f->mlx->ptr, f->mlx->win);
-	change_fractol(f);
+	start_fractol(f);
 	fill_backgound(0, f);
 	return (0);
 }

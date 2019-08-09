@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   init_cl.c                                          :+:      :+:    :+:   */
+/*   opencl.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 10:46:32 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/08 17:02:17 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/09 09:44:03 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void					*error_cl(int key)
+static void			*error_cl(int key)
 {
 	if (key == 0)
 		ft_putendl("\033[31mMalloc return null\033[0m");
@@ -35,11 +35,11 @@ void					*error_cl(int key)
 	return (NULL);
 }
 
-void					*fill_buf(t_fractol *f)
+void				*fill_buf(t_fractol *f)
 {
-	int					hight;
-	int					width;
-	cl_int				err;
+	int				hight;
+	int				width;
+	cl_int			err;
 
 	hight = HIGHT;
 	width = WIDTH;
@@ -55,15 +55,16 @@ void					*fill_buf(t_fractol *f)
 	err |= clSetKernelArg(f->cl->kernel, 9, sizeof(double), &f->crdn->move_x);
 	err |= clSetKernelArg(f->cl->kernel, 10, sizeof(double), &f->crdn->move_y);
 	err |= clSetKernelArg(f->cl->kernel, 11, sizeof(int), &f->cmplx->repeats);
+	// printf("2. %d\n", (int)err);
 	if (err != CL_SUCCESS)
 		return (error_cl(8));
 	return (f);
 }
 
-void					*create_buf(t_fractol *f)
+void				*create_buf(t_fractol *f)
 {
-	cl_int				err;
-	size_t				global_work_size;
+	cl_int			err;
+	size_t			global_work_size;
 
 	f->cl->res = clCreateBuffer(f->cl->context, CL_MEM_READ_WRITE, \
 		SIZE * sizeof(cl_int), NULL, &err);
@@ -79,9 +80,9 @@ void					*create_buf(t_fractol *f)
 	return (f);
 }
 
-void					*init2_cl(char *file, t_fractol *f)
+void				*init2_cl(char *file, t_fractol *f)
 {
-	cl_int				err;
+	cl_int			err;
 
 	f->cl->program = clCreateProgramWithSource(f->cl->context, 1, \
 		(const char **)&file, NULL, &err);
@@ -89,18 +90,19 @@ void					*init2_cl(char *file, t_fractol *f)
 		return (error_cl(5));
 	if ((err = clBuildProgram(f->cl->program, 0, NULL, NULL, NULL, \
 		NULL) != CL_SUCCESS))
+	{
+		printf("1. %d\n", (int)err); //!!!!!!!!!!!!!!!!!!!
 		return (error_cl(6));
+	}
 	f->cl->kernel = clCreateKernel(f->cl->program, "fractol", &err);
-	if (!(create_buf(f)) || err != CL_SUCCESS)
-		return (error_cl(0));
 	return (f);
 }
 
-void					*init_cl(t_fractol *f)
+void				*init_cl(t_fractol *f)
 {
-	cl_int				err;
-	char				*file;
-	size_t				size;
+	cl_int			err;
+	char			*file;
+	size_t			size;
 
 	size = 1100;
 	if (!(file = read_file(size, PROGRAM_FILE)))

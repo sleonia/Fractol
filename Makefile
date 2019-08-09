@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2019/08/04 12:55:22 by sleonia          ###   ########.fr        #
+#    Updated: 2019/08/09 09:57:40 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -48,11 +48,9 @@ SRC_NAME =	main.c		  	 \
 			window.c	 	 \
 			list.c		  	 \
 			key_event.c   	 \
-			draw.c		  	 \
-			change_fractol.c \
-			draw_strips.c	 \
 			mouse_event.c	 \
-			init_cl.c
+			opencl.c		 \
+			choose_color.c
 						
 OBJ_NAME = $(SRC_NAME:.c=.o)
 
@@ -72,6 +70,7 @@ $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 #****************************************************************************#
 
 lib_refresh:
+	@clear
 	@make -C $(LIB_PATH)
 	@make -C $(MLX_PATH)
 	@echo ""

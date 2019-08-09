@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft__up_str.c                                       :+:      :+:    :+:   */
+/*   ft_strup.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleonia <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/25 21:06:29 by sleonia           #+#    #+#             */
-/*   Updated: 2019/04/25 21:06:31 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/09 10:33:42 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,14 +19,14 @@ char		*ft_strup(char *s)
 
 	if (!s)
 		return (NULL);
-	i = 0;
+	i = -1;
 	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	while (s[i])
+	while (s[++i])
 	{
 		while (s[i] && s[i] >= 97 && s[i] <= 122)
 		{
 			str[i] = s[i] - 32;
-			i++;
+			++i;
 			if (!s[i])
 			{
 				str[i] = '\0';
@@ -34,7 +34,6 @@ char		*ft_strup(char *s)
 			}
 		}
 		str[i] = s[i];
-		i++;
 	}
 	str[i] = '\0';
 	return (str);

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 11:55:26 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/08 17:11:25 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/09 03:29:42 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int					delete_struct(int key, t_fractol *f)
 	return (0);
 }
 
-void				fill_crdn(t_fractol *f)
+static void			fill_crdn(t_fractol *f)
 {
 	f->crdn->min_x = -2.0;
 	f->crdn->max_x = 1.0;
@@ -57,7 +57,7 @@ t_fractol			*create_struct(void)
 		delete_struct(2, f);
 	if (!(f->cmplx = (t_cmplx *)malloc(sizeof(t_cmplx))))
 		delete_struct(3, f);
-	f->cmplx->repeats = 3000;
+	f->cmplx->repeats = 30;
 	f->color = BLOOD;
 	return (f);
 }

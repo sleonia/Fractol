@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:38:18 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/04 06:44:41 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/09 03:09:54 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void				zoom(int keycode, t_fractol *f)
 static void			move(int keycode, t_fractol *f)
 {
 	if (keycode == 2)
-		f->crdn->move_x -= 0.02;
-	if (keycode == 0)
 		f->crdn->move_x += 0.02;
+	if (keycode == 0)
+		f->crdn->move_x -= 0.02;
 	if (keycode == 1)
-		f->crdn->move_y += 0.02;
-	if (keycode == 13)
 		f->crdn->move_y -= 0.02;
+	if (keycode == 13)
+		f->crdn->move_y += 0.02;
 }
 
 static void			recolor(int keycode, t_fractol *f)
@@ -64,8 +64,6 @@ int					key_event(int keycode, t_fractol *f)
 		zoom(keycode, f);
 	if ((keycode >= 0 && keycode <= 2) || keycode == 13)
 		move(keycode, f);
-	mlx_clear_window(f->mlx->ptr, f->mlx->win);
-	change_fractol(f);
-	fill_backgound(0, f);
+	start_fractol(f);
 	return (0);
 }

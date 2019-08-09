@@ -25,9 +25,9 @@ __kernel void fractol(__global int	*res,
 	int pixel = get_global_id(0);
 	y = pixel / width;
 	x = pixel % width;
-	i = 0;
-	start_y = max_y - (double)y * shift_y - (double)move_y;
-	start_x = min_x + (double)x * shift_x - (double)move_x;
+	i = -1;
+	start_y = max_y - y * shift_y - move_y;
+	start_x = min_x + x * shift_x - move_x;
 	new_x = start_x;
 	new_y = start_y;
 	sqr_x = 0.0;
@@ -38,10 +38,10 @@ __kernel void fractol(__global int	*res,
 		sqr_y = new_y * new_y;
 		new_y = 2 * new_x * new_y + start_y;
 		new_x = sqr_x - sqr_y + start_x;
-		i++;
+		++i;
 	}
 	if (sqr_x + sqr_y < 4.0)
-		res[pixel] = 0x58E000;
+		res[pixel] = 0;
 	else
 		res[pixel] = color;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sleonia <marvin@42.fr>                     +#+  +:+       +#+        */
+/*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/04/11 10:58:38 by sleonia           #+#    #+#             */
-/*   Updated: 2019/04/11 10:58:40 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/09 10:35:19 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static int			ft_counter_i(char const *s)
 	{
 		if (!(s[i + 1]))
 			return (-1);
-		i++;
+		++i;
 	}
 	return (i);
 }
