@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:52:08 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/12 08:25:58 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/12 08:54:57 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int					main(int ac, char **av);
 /*
 ** window.c
 */
-int			close_window(void *param);
+int			        close_window(void *param);
 void				fill_background(int color, t_fractol *f);
 void				*run_fractol(t_fractol *f);
 int					create_window(t_fractol *f);
@@ -37,7 +37,7 @@ int					create_window(t_fractol *f);
 ** list.c
 */
 int					delete_struct(int key, t_fractol *f);
-void			fill_struct(t_fractol *f);
+void		    	fill_struct(t_fractol *f);
 t_fractol			*create_struct(void);
 
 /*
