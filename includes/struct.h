@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:56:00 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/12 08:55:10 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/12 13:28:24 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef struct			s_cl
 {
 	char				*file;
 	int					*i_arg;
-	float				*f_arg;
+	double				*f_arg;
 	cl_mem				cl_data;
 	cl_mem				cl_i_arg;
 	cl_mem				cl_f_arg;
@@ -37,14 +37,14 @@ typedef struct			s_cl
 
 typedef struct			s_crdn
 {
-	float				max_x;
-	float				min_x;
-	float				max_y;
-	float				min_y;
-	float				shift_x;
-	float				shift_y;
-	float				move_x;
-	float				move_y;
+	double				max_x;
+	double				min_x;
+	double				max_y;
+	double				min_y;
+	double				shift_x;
+	double				shift_y;
+	double				move_x;
+	double				move_y;
 }						t_crdn;
 
 typedef struct			s_mlx
@@ -60,12 +60,12 @@ typedef struct			s_mlx
 
 typedef struct			s_cmplx
 {
-	float				start_x;
-	float				start_y;
-	float				new_x;
-	float				new_y;
-	float				sqr_x;
-	float				sqr_y;
+	double				start_x;
+	double				start_y;
+	double				new_x;
+	double				new_y;
+	double				sqr_x;
+	double				sqr_y;
 }						t_cmplx;
 
 typedef struct			s_fractol

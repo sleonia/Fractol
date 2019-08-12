@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 09:13:14 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/12 08:55:21 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/12 12:18:02 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,23 +19,6 @@
 # define EXIT  		53
 # define PLUS  		69
 # define MINUS		78
-
-/*
-** List of fractol`s
-*/
-# define MANDELBROT 0
-# define JULIA     	1
-
-/*
-** Colors
-*/
-# define WHITE 		0xFFFFFF
-# define BLOOD 		0x630101
-# define YELLOW		0xA18B28
-# define PURPLE 	0x9303A7
-# define BLUE 		0x0B61A4
-# define GREEN 		0x58E000
-# define PINK       0xFF66FF
 
 /*
 ** Strip`s step

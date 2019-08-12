@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 10:46:32 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/12 08:54:09 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/12 13:34:17 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void				*create_buf(t_fractol *f)
 		10 * sizeof(int), f->cl->i_arg, 0, NULL, NULL)) != 0)
 		return (error_cl(9));
 	if ((err = clEnqueueWriteBuffer(f->cl->queue, f->cl->cl_f_arg, CL_TRUE, 0, \
-		10 * sizeof(float), f->cl->f_arg, 0, NULL, NULL)) != 0)
+		10 * sizeof(double), f->cl->f_arg, 0, NULL, NULL)) != 0)
 		return (error_cl(9));
 	err = clSetKernelArg(f->cl->kernel, 0, sizeof(cl_mem), &f->cl->cl_data);
 	err |= clSetKernelArg(f->cl->kernel, 1, sizeof(cl_mem), &f->cl->cl_i_arg);
@@ -78,7 +78,7 @@ void				*create_buf(t_fractol *f)
 	return (f);
 }
 
-void				*init_buf_cl(t_fractol *f)
+static void			*init_buf_cl(t_fractol *f)
 {
 	cl_int			err;
 
@@ -91,7 +91,7 @@ void				*init_buf_cl(t_fractol *f)
 	if (err != 0)
 		return (error_cl(9));
 	f->cl->cl_f_arg = clCreateBuffer(f->cl->context, CL_MEM_READ_ONLY, \
-		10 * sizeof(float), NULL, &err);
+		10 * sizeof(double), NULL, &err);
 	if (err != 0)
 		return (error_cl(9));
 	return (f);
@@ -101,7 +101,7 @@ void				*init_cl(t_fractol *f)
 {
 	cl_int			err;
 
-	if (!(f->cl->file = read_file(1100, PROGRAM_FILE)))
+	if (!(f->cl->file = read_file(10000, PROGRAM_FILE)))
 		return (error_cl(0));
 	if ((err = clGetPlatformIDs(1, &f->cl->p_id, NULL) != 0))
 		return (error_cl(1));

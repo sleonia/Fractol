@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:38:18 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/12 08:53:20 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/12 13:06:18 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,13 +23,13 @@ void				zoom(int keycode, t_fractol *f)
 static void			move(int keycode, t_fractol *f)
 {
 	if (keycode == 2)
-		f->crdn->move_x += 0.02;
+		f->crdn->move_x += 0.01;
 	if (keycode == 0)
-		f->crdn->move_x -= 0.02;
+		f->crdn->move_x -= 0.01;
 	if (keycode == 1)
-		f->crdn->move_y -= 0.02;
+		f->crdn->move_y -= 0.01;
 	if (keycode == 13)
-		f->crdn->move_y += 0.02;
+		f->crdn->move_y += 0.01;
 }
 
 static void			recolor(int keycode, t_fractol *f)
@@ -61,7 +61,7 @@ static void			*resize(int keycode, t_fractol *f)
 		f->hight += 10;
 		f->width += 10;
 	}
-	if (keycode == 27)
+	if ((keycode == 27) && (f->hight > 20 && f->width))
 	{
 		f->hight -= 10;
 		f->width -= 10;
@@ -69,7 +69,6 @@ static void			*resize(int keycode, t_fractol *f)
 	mlx_destroy_image(f->mlx->ptr, f->mlx->img);
 	mlx_destroy_window(f->mlx->ptr, f->mlx->win);
 	f->mlx->data = NULL;
-	f->size = f->hight * f->width;
 	clReleaseMemObject(f->cl->cl_data);
 	clReleaseMemObject(f->cl->cl_i_arg);
 	clReleaseMemObject(f->cl->cl_f_arg);

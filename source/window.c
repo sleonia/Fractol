@@ -6,13 +6,13 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:34:25 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/12 08:54:28 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/12 13:32:02 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int					close_window(void *f)
+static int			close_window(void *f)
 {
 	clReleaseProgram(((t_fractol *)f)->cl->program);
 	clReleaseKernel(((t_fractol *)f)->cl->kernel);
