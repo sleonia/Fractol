@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2019/08/12 08:56:11 by sleonia          ###   ########.fr        #
+#    Updated: 2019/08/15 11:30:32 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,6 +49,8 @@ SRC_NAME =	main.c		  	 \
 			list.c		  	 \
 			key_event.c   	 \
 			mouse_event.c	 \
+			music.c			 \
+			change_fractal.c \
 			opencl.c
 						
 OBJ_NAME = $(SRC_NAME:.c=.o)

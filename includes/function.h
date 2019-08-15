@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:52:08 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/12 13:34:07 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/15 20:43:57 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,14 +21,14 @@
 /*
 ** main.c
 */
-int	        		error_prosessing(int key);
+int					error_prosessing(int key);
 static	int			arg_prosessing(char *arg);
 int					main(int ac, char **av);
 
 /*
 ** window.c
 */
-static int          close_window(void *param);
+static int			close_window(void *param);
 void				fill_background(int color, t_fractol *f);
 void				*run_fractol(t_fractol *f);
 int					create_window(t_fractol *f);
@@ -37,8 +37,8 @@ int					create_window(t_fractol *f);
 ** list.c
 */
 int					delete_struct(int key, t_fractol *f);
-void		    	fill_struct(t_fractol *f);
-static void			default_value(t_fractol *f);
+void				fill_struct(t_fractol *f);
+void				default_value(t_fractol *f);
 t_fractol			*create_struct(void);
 
 /*
@@ -55,6 +55,17 @@ int					key_event(int keycode, t_fractol *f);
 */
 int					mouse_move(int x, int y, t_fractol *f);
 int					mouse_press(int button, int x, int y, t_fractol *f);
+int					mouse_event(int keycode, int x, int y, t_fractol *f);
+
+/*
+** music.c
+*/
+void				music(int keycode, t_fractol *f);
+
+/*
+** change_fractal.c
+*/
+void				change_fractal(t_fractol *f);
 
 /*
 ** opencl.c
@@ -64,6 +75,5 @@ void				fill_arg(t_fractol *f);
 void				*create_buf(t_fractol *f);
 static void			*init_buf_cl(t_fractol *f);
 void				*init_cl(t_fractol *f);
-
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/03 10:46:32 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/12 13:34:17 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/15 19:59:34 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,9 @@ void				fill_arg(t_fractol *f)
 	f->cl->f_arg[3] = f->crdn->shift_x;
 	f->cl->f_arg[4] = f->crdn->move_y;
 	f->cl->f_arg[5] = f->crdn->move_x;
+	f->cl->f_arg[6] = f->crdn->move_x;
+	f->cl->f_arg[7] = f->crdn->rotation_x;
+	f->cl->f_arg[8] = f->crdn->rotation_y;
 }
 
 void				*create_buf(t_fractol *f)
@@ -101,7 +104,7 @@ void				*init_cl(t_fractol *f)
 {
 	cl_int			err;
 
-	if (!(f->cl->file = read_file(10000, PROGRAM_FILE)))
+	if (!(f->cl->file = read_file(3500, PROGRAM_FILE)))
 		return (error_cl(0));
 	if ((err = clGetPlatformIDs(1, &f->cl->p_id, NULL) != 0))
 		return (error_cl(1));

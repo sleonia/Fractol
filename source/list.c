@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 11:55:26 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/12 13:29:25 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/15 18:33:30 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,35 +40,28 @@ int					delete_struct(int key, t_fractol *f)
 void				fill_struct(t_fractol *f)
 {
 	f->size = f->hight * f->width;
-	f->crdn->min_x = -2.0;
-	f->crdn->max_x = 1.0;
-	f->crdn->min_y = -1.0;
 	f->crdn->max_y = f->crdn->min_y + (f->crdn->max_x - f->crdn->min_x) \
 		* f->hight / f->width;
 	f->crdn->shift_x = (f->crdn->max_x - f->crdn->min_x) / (f->width - 1);
 	f->crdn->shift_y = (f->crdn->max_y - f->crdn->min_y) / (f->hight - 1);
-	f->crdn->move_x = f->crdn->move_x;
-	f->crdn->move_y = f->crdn->move_y;
-	f->repeats = 1000;
 }
 
-static void			default_value(t_fractol *f)
+void				default_value(t_fractol *f)
 {
 	f->size = f->hight * f->width;
-	f->crdn->min_x = -2.0;
-	f->crdn->max_x = 1.0;
-	f->crdn->min_y = -1.0;
+	f->crdn->min_x = -2.5;
+	f->crdn->max_x = 1.5;
+	f->crdn->min_y = -1.5;
 	f->crdn->max_y = f->crdn->min_y + (f->crdn->max_x - f->crdn->min_x) \
 		* f->hight / f->width;
 	f->crdn->shift_x = (f->crdn->max_x - f->crdn->min_x) / (f->width - 1);
 	f->crdn->shift_y = (f->crdn->max_y - f->crdn->min_y) / (f->hight - 1);
-	f->crdn->move_x = 0.0;
-	f->crdn->move_y = 0.0;
-	f->repeats = 10000;
-	f->color_key = 0;
-	f->hight = 800;
-	f->width = 1200;
+	f->crdn->move_x = 1;
+	f->crdn->move_y = 1;
+	f->repeats = 200;
 	f->move_flag = 0;
+	f->crdn->rotation_x = 0.0;
+	f->crdn->rotation_y = 0.0;
 }
 
 t_fractol			*create_struct(void)
@@ -77,6 +70,10 @@ t_fractol			*create_struct(void)
 
 	if (!(f = (t_fractol *)malloc(sizeof(t_fractol))))
 		return (NULL);
+	f->color_key = 0;
+	f->hight = 800;
+	f->width = 1200;
+	f->song_key = 0;
 	if (!(f->cl = (t_cl *)malloc(sizeof(t_cl))))
 		delete_struct(0, f);
 	if (!(f->cl->i_arg = (int *)malloc(sizeof(int) * 10)))

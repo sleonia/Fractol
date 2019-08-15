@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:38:18 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/12 13:06:18 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/15 20:15:05 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,54 +14,66 @@
 
 void				zoom(int keycode, t_fractol *f)
 {
-	if (keycode == MINUS)
-		return ;
 	if (keycode == PLUS)
-		return ;
+	{
+		f->crdn->min_x *= 0.95;
+		f->crdn->max_x *= 0.95;
+		f->crdn->min_y *= 0.95;
+		f->repeats += 2;
+	}
+	if (keycode == MINUS)
+	{
+		f->crdn->min_x *= 1.1;
+		f->crdn->max_x *= 1.1;
+		f->crdn->min_y *= 1.1;
+		f->repeats -= 2;
+	}
 }
 
 static void			move(int keycode, t_fractol *f)
 {
-	if (keycode == 2)
-		f->crdn->move_x += 0.01;
-	if (keycode == 0)
-		f->crdn->move_x -= 0.01;
-	if (keycode == 1)
-		f->crdn->move_y -= 0.01;
-	if (keycode == 13)
-		f->crdn->move_y += 0.01;
+	if (keycode == RIGHT)
+		f->crdn->move_x -= (f->crdn->max_x - f->crdn->min_x) / 0.1;
+	if (keycode == LEFT)
+		f->crdn->move_x += (f->crdn->max_x - f->crdn->min_x) / 0.1;
+	if (keycode == DOWN)
+		f->crdn->move_y += (f->crdn->max_y - f->crdn->min_y) / 0.1;
+	if (keycode == TOP)
+		f->crdn->move_y -= (f->crdn->max_y - f->crdn->min_y) / 0.1;
 }
 
 static void			recolor(int keycode, t_fractol *f)
 {
-	if (keycode == 82)
+	if (keycode == NUMPAD_0)
 		f->color_key = 0;
-	else if (keycode == 83)
+	else if (keycode == NUMPAD_1)
 		f->color_key = 1;
-	else if (keycode == 84)
+	else if (keycode == NUMPAD_2)
 		f->color_key = 2;
-	else if (keycode == 85)
+	else if (keycode == NUMPAD_3)
 		f->color_key = 3;
-	else if (keycode == 86)
+	else if (keycode == NUMPAD_4)
 		f->color_key = 4;
-	else if (keycode == 87)
+	else if (keycode == NUMPAD_5)
 		f->color_key = 5;
-	else if (keycode == 88)
+	else if (keycode == NUMPAD_6)
 		f->color_key = 6;
-	else if (keycode == 89)
+	else if (keycode == NUMPAD_7)
 		f->color_key = 7;
-	else if (keycode == 91)
+	else if (keycode == NUMPAD_8)
 		f->color_key = 8;
+	else if (keycode == NUMPAD_9)
+		f->color_key = 9;
 }
 
 static void			*resize(int keycode, t_fractol *f)
 {
-	if (keycode == 24)
+	if (keycode == INC_WIN)
 	{
 		f->hight += 10;
 		f->width += 10;
 	}
-	if ((keycode == 27) && (f->hight > 20 && f->width))
+	if ((keycode == DEC_WIN) && (f->hight > 20 && f->width))
 	{
 		f->hight -= 10;
 		f->width -= 10;
@@ -85,18 +97,27 @@ static void			*resize(int keycode, t_fractol *f)
 int					key_event(int keycode, t_fractol *f)
 {
 	if (keycode == EXIT)
+	{
+		if (((t_fractol *)f)->song_key == 1)
+			system("killall afplay");
 		exit(0);
-	if ((keycode >= 82 && keycode <= 89) || keycode == 91)
+	}
+	if ((keycode >= NUMPAD_0 && keycode <= NUMPAD_7) || keycode == NUMPAD_8 \
+	|| keycode == NUMPAD_9)
 		recolor(keycode, f);
-	if (keycode == PLUS || keycode == MINUS)
-		zoom(keycode, f);
-	if ((keycode >= 0 && keycode <= 2) || keycode == 13)
+	if ((keycode >= LEFT && keycode <= RIGHT) || keycode == TOP)
 		move(keycode, f);
-	if (keycode == 24 || keycode == 27)
+	if (keycode == INC_WIN || keycode == DEC_WIN)
 	{
 		if (!resize(keycode, f))
 			return (1);
 	}
+	if (keycode == REPEAT_BUF)
+		f->repeats += 2;
+	if (keycode == REPEAT_DEBUF)
+		f->repeats -= 2;
+	if (keycode == PLAY_SONG || keycode == STOP_SONG)
+		music(keycode, f);
 	run_fractol(f);
 	return (0);
 }
