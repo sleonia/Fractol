@@ -8,5 +8,7 @@
 ## Compiling
 Use `make` and run `./fractol [0-6]`.
 
-!![Example](https://github.com/EmbodimentEvil/fractol/raw/master/image/julia2.png)
+![Example](https://github.com/EmbodimentEvil/fractol/raw/master/image/julia2.png)
 ![Example](https://github.com/EmbodimentEvil/fractol/raw/master/image/spider.png)
+![Example](https://github.com/EmbodimentEvil/fractol/raw/master/image/zoom1.png)
+![Example](https://github.com/EmbodimentEvil/fractol/raw/master/image/zoom2.png)
