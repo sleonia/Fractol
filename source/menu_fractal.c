@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   change_fractal.c                                   :+:      :+:    :+:   */
+/*   menu_fractal.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/15 11:27:56 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/15 20:50:39 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/16 20:28:27 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-void                change_fractal(t_fractol *f)
+void				menu_fractal(t_fractol *f)
 {
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 10, 200, \
 	16737970, "Change fractal:");
@@ -25,11 +25,9 @@ void                change_fractal(t_fractol *f)
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 10, 305, \
 	806806, "Mandelbar");
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 10, 330, \
-	16777215, " ");
+	16711680, "Spider");
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 10, 355, \
-	16711680, " ");
+	50565202, "Celtic Mandelbrot");
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 10, 380, \
-	50565202, " ");
-	mlx_string_put(f->mlx->ptr, f->mlx->win, 10, 405, \
-	4567832, " ");
+	0xFFFF00, "Butterfly");
 }

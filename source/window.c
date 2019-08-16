@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 12:34:25 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/15 11:28:05 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/16 15:40:09 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,23 +31,23 @@ static void			menu(t_fractol *f)
 
 	repeat = ft_itoa(f->repeats);
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 5, 0, \
-	0xFFAAFF, "Navigation:");
+	0xFFA500, "Navigation:");
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 5, 25, \
-	0xFFFF, "P/O music");
+	0x6A5ACD, "P/O music");
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 5, 50, \
-	0xFFFF, "numpud 0-9 color");
+	0xFFDEAD, "numpud 0-9 color");
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 5, 75, \
 	0xFFFF, "wasd controls");
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 5, 100, \
-	0xFFFF, "/* repeats");
+	0xFF7F50, "/* repeats");
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 5, 125, \
-	0xFFFF, "+- change window");
+	0xFFD700, "+- change window");
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 5, 150, \
-	0xFFFF, "repeat = ");
+	0xA0522D, "repeat = ");
 	mlx_string_put(f->mlx->ptr, f->mlx->win, 90, 150, \
-	0xFFFF, repeat);
+	0xBC8F8F, repeat);
 	free(repeat);
-	change_fractal(f);
+	menu_fractal(f);
 }
 
 void				fill_background(int color, t_fractol *f)

@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 11:55:26 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/15 18:33:30 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/16 17:34:40 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,8 @@ void				default_value(t_fractol *f)
 	f->crdn->move_y = 1;
 	f->repeats = 200;
 	f->move_flag = 0;
-	f->crdn->rotation_x = 0.0;
-	f->crdn->rotation_y = 0.0;
+	f->crdn->rotation_x = -0.5;
+	f->crdn->rotation_y = 0.5;
 }
 
 t_fractol			*create_struct(void)

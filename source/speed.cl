@@ -51,46 +51,57 @@ __kernel void fractol(	__global int	*data,
 	i = -1;
 	start_y = f_arg[0] - y * f_arg[2] - f_arg[4] / i_arg[0];
 	start_x = f_arg[1] + x * f_arg[3] - f_arg[5] / i_arg[1];
-	if (i_arg[2] == 1)
-	{
-		start_y = f_arg[8] - y * f_arg[2];
-		start_x = f_arg[7] + x * f_arg[3];
-		// start_y = start_y;
-		// start_x = start_x;
-	}
 	new_x = start_x;
 	new_y = start_y;
+	if (i_arg[2] == 1)
+	{
+		start_x = f_arg[7];
+		start_y = f_arg[8];
+	}
 	while ((SQR(new_x) + SQR(new_y) < 4) && (i < i_arg[3]))
 	{
 		if (i_arg[2] == 0)
 		{
 			tmp = SQR(new_x) - SQR(new_y) + start_x;
-			new_y = 2 * new_x * new_y + start_y;
+			new_y = 2.0 * new_x * new_y + start_y;
 			new_x = tmp;
 		}
 		if (i_arg[2] == 1)
 		{
-			tmp = SQR(new_x) - SQR(new_y) - 0.4;
-			new_y = 2 * new_x * new_y + 0.6;
+			tmp = SQR(new_x) - SQR(new_y) + start_x;
+			new_y = 2.0 * new_x * new_y + start_y;
 			new_x = tmp;
 		}
 		if (i_arg[2] == 2)
 		{
 			tmp = SQR(new_x) - SQR(new_y) + start_x;
-			new_y = 2 * ABS(new_x * new_y) - start_y;
-			new_x = ABS(tmp);
+			new_y = -2.0 * SQR((new_x) * (new_y)) + start_y;
+			new_x = tmp;
 		}
 		if (i_arg[2] == 3)
 		{
 			tmp = SQR(new_x) - SQR(new_y) + start_x;
-			new_y = -2 * (new_x * new_y) + start_y;
+			new_y = -2.0 * (new_x * new_y) + start_y;
 			new_x = tmp;
 		}
 		if (i_arg[2] == 4)
 		{
-			start_x = SQR(x) * SQR(x) + 2 * SQR(x) * SQR(y) + SQR(y) * SQR(y);
-			tmp = x * 2 / 3 + SQR(x) - SQR(y) / 3 / start_x;
-			new_y = y * 2 / 3 *  (1 - x / new_x);
+			tmp = SQR(new_x) - SQR(new_y) + start_x;
+			new_y = 2.0 * new_x * new_y + start_y;
+			new_x = tmp;
+			start_x = start_x / 2 + new_x;
+			start_y = start_y / 2 + new_y;
+		}
+		if (i_arg[2] == 5)
+		{
+			tmp = (SQR(new_x) - SQR(new_y)) + start_x;
+			new_y = 2.0 * (new_x * new_y) + start_y;
+			new_x = ABS(tmp);
+		}
+		if (i_arg[2] == 6)
+		{
+			tmp = SQR(new_x) - SQR(new_y) + start_x;
+			new_y = -2.0 * SQR((new_x) / (new_y)) + start_y;
 			new_x = tmp;
 		}
 		++i;

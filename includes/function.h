@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:52:08 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/15 20:43:57 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/16 15:38:18 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,9 +63,9 @@ int					mouse_event(int keycode, int x, int y, t_fractol *f);
 void				music(int keycode, t_fractol *f);
 
 /*
-** change_fractal.c
+** menu_fractal.c
 */
-void				change_fractal(t_fractol *f);
+void				menu_fractal(t_fractol *f);
 
 /*
 ** opencl.c

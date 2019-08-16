@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/20 07:18:07 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/15 11:47:07 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/16 20:29:07 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,9 @@ int					error_prosessing(int key)
 \033[34m1 - Julia\n\
 \033[35m2 - Burning Ship\n\
 \033[36m3 - Mandelbar\n\
-\033[32m4 - \n\
-\033[33m5 - \n\
-\033[34m6 - \n\
-\033[35m7 - \n\
-\033[36m8 - \n");
+\033[33m4 - Spider\n\
+\033[34m5 - Celtic Mandelbrot\n\
+\033[36m6 - Butterfly\n");
 	return (1);
 }
 
@@ -47,10 +45,6 @@ static	int			arg_prosessing(char *arg)
 		return (5);
 	if (ft_strcmp(arg, "6") == 0)
 		return (6);
-	if (ft_strcmp(arg, "7") == 0)
-		return (7);
-	if (ft_strcmp(arg, "8") == 0)
-		return (8);
 	return (-1);
 }
 

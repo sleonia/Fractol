@@ -6,7 +6,7 @@
 /*   By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/29 02:56:00 by sleonia           #+#    #+#             */
-/*   Updated: 2019/08/15 18:33:09 by sleonia          ###   ########.fr       */
+/*   Updated: 2019/08/16 17:46:39 by sleonia          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,6 @@ typedef struct			s_fractol
 	int					width;
 	int					size;
 	short int			fractol;
-	short int			move_flag;
 	int					color_key;
 	int					song_key;
 	int					repeats;

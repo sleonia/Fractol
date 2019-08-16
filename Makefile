@@ -6,7 +6,7 @@
 #    By: sleonia <sleonia@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/07/03 17:13:33 by sleonia           #+#    #+#              #
-#    Updated: 2019/08/15 11:30:32 by sleonia          ###   ########.fr        #
+#    Updated: 2019/08/16 17:45:12 by sleonia          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,7 +50,7 @@ SRC_NAME =	main.c		  	 \
 			key_event.c   	 \
 			mouse_event.c	 \
 			music.c			 \
-			change_fractal.c \
+			menu_fractal.c	 \
 			opencl.c
 						
 OBJ_NAME = $(SRC_NAME:.c=.o)
@@ -59,7 +59,7 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@make lib_refresh
-	@gcc -g -Wall -Wextra -Werror -o $(NAME) $(OBJ) -lm -L $(LIB_PATH) \
+	@gcc -Wall -Wextra -Werror -o $(NAME) $(OBJ) -lm -L $(LIB_PATH) \
 		 -lft -L $(MLX_PATH) -lmlx -framework OpenGL -framework AppKit -framework OpenCL
 	 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c $(INC_PATH)/fractol.h
