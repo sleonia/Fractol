@@ -5,7 +5,8 @@
 ---
 ##### In this project I use OpenCl and create a program that displays 2D mathematical fractols.
 ---
-## Compiling
+## Compiling  
+Compile only on **OS X** 
 Use `make` and run `./fractol [0-6]`.  
 Follow the menu and use the keyboard and mouse for changes.
 
